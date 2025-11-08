@@ -11,12 +11,12 @@ export default function Home() {
   const [predictedPrice, setPredictedPrice] = useState<number | null>(null)
 
   const cutOptions = ["Fair", "Good", "Very Good", "Premium", "Ideal"]
-  const colorOptions = ["D", "E", "F", "G", "H", "I", "J"].reverse()
+  const colorOptions = ["J", "I", "H", "G", "F", "E", "D"]
   const clarityOptions = ["IF", "VVS1", "VVS2", "VS1", "VS2", "SI1", "SI2", "I1"].reverse()
 
   const handlePredictPrice = async () => {
     try {
-      const response = await axios.get(`${process.env.API_URI || "http://localhost:5000"}/api/predict`, {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URI || "http://localhost:5000"}/api/predict`, {
         params: {
           carat,
           cut,

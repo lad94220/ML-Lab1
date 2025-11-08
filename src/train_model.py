@@ -19,7 +19,7 @@ def train_model_5():
     model = LinearRegression()
     model.fit(X, y)
     
-    model_path = os.path.join(os.path.dirname(__file__), 'app/server/model_5.pkl')
+    model_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'app/server/model_5.pkl'))
     with open(model_path, 'wb') as f:
         pickle.dump(model, f)
     
