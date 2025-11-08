@@ -50,4 +50,6 @@ async def predict(carat: float, cut: str, color: str, clarity: str):
 
 if __name__ == '__main__':
   import uvicorn
-  uvicorn.run(app, host='localhost', port=5000)
+  import os
+  port = int(os.environ.get('PORT', 8000))
+  uvicorn.run(app, host='0.0.0.0', port=port)

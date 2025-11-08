@@ -16,7 +16,7 @@ This will create `model_5.pkl` file with the trained model.
 2. **Run the server:**
 ```bash
 pip install requirements.txt
-python server.py
+uvicorn server:app --host localhost --port 5000
 ```
 
 Server will start at `http://localhost:5000`
