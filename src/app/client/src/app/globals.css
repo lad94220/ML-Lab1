@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@keyframes gradient-animation {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.02);
+  }
+}
+
+.animate-gradient {
+  background: linear-gradient(to bottom right, #B0E0D3, #264653);
+  background-size: 200% 200%;
+  animation: gradient-animation 6s ease infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s ease-in-out infinite;
+}
