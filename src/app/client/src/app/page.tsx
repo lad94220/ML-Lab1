@@ -123,12 +123,18 @@ export default function Home() {
               </div>
             ) : (
               <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-12 shadow-2xl border-4 border-[#2a9d8f] animate-pulse-slow">
-              <p className="text-xl text-gray-600 mb-4">Predicted Diamond Price</p>
-              <p className="text-7xl font-extrabold text-[#264653] mb-4">
-                ${predictedPrice?.toLocaleString()}
-              </p>
-              <div className="text-6xl">💎</div>
-            </div>
+                <p className="text-xl text-gray-600 mb-4">Predicted Diamond Price</p>
+                <p className={`font-extrabold text-[#264653] mb-4 ${
+                  predictedPrice?.toLocaleString().length > 10 
+                  ? 'text-4xl' 
+                  : predictedPrice?.toLocaleString().length > 7
+                  ? 'text-5xl'
+                  : 'text-7xl'
+                }`}>
+                  ${predictedPrice?.toLocaleString()}
+                </p>
+                <div className="text-6xl">💎</div>
+              </div>
             )
           ) : (
             <div className="text-center">
