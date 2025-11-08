@@ -9,14 +9,16 @@ export default function Home() {
   const [color, setColor] = useState<string>("")
   const [clarity, setClarity] = useState<string>("")
   const [predictedPrice, setPredictedPrice] = useState<number | null>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const cutOptions = ["Fair", "Good", "Very Good", "Premium", "Ideal"]
-  const colorOptions = ["D", "E", "F", "G", "H", "I", "J"].reverse()
+  const colorOptions = ["J", "I", "H", "G", "F", "E", "D"]
   const clarityOptions = ["IF", "VVS1", "VVS2", "VS1", "VS2", "SI1", "SI2", "I1"].reverse()
 
   const handlePredictPrice = async () => {
+    setIsLoading(true)
     try {
-      const response = await axios.get(`${process.env.API_URI || "http://localhost:5000"}/api/predict`, {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URI || "http://localhost:5000"}/api/predict`, {
         params: {
           carat,
           cut,
@@ -26,7 +28,9 @@ export default function Home() {
         return response.data
       })
       setPredictedPrice(response.predicted_price)
+      setIsLoading(false)
     } catch (error) {
+      setIsLoading(false)
       throw error
     }
   }
@@ -112,13 +116,20 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-[#264653] mb-8">Prediction Result</h2>
           
           {predictedPrice !== null ? (
-            <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-12 shadow-2xl border-4 border-[#2a9d8f] animate-pulse-slow">
+            isLoading ? (
+              <div className="flex flex-col items-center gap-4">
+                <div className="w-16 h-16 border-4 border-[#264653]/20 border-t-[#2a9d8f] rounded-full animate-spin"></div>
+                <p className="text-xl text-[#264653] font-medium">Loading...</p>
+              </div>
+            ) : (
+              <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-12 shadow-2xl border-4 border-[#2a9d8f] animate-pulse-slow">
               <p className="text-xl text-gray-600 mb-4">Predicted Diamond Price</p>
               <p className="text-7xl font-extrabold text-[#264653] mb-4">
                 ${predictedPrice?.toLocaleString()}
               </p>
               <div className="text-6xl">💎</div>
             </div>
+            )
           ) : (
             <div className="text-center">
               <div className="text-8xl mb-6 opacity-30">💎</div>

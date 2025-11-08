@@ -6,48 +6,39 @@ Server implementation for Model 5: log(carat) + cut + color + clarity
 
 1. **Train the model first:**
 ```bash
-cd src/app/server
+cd src/
 python train_model.py
+cd app/server
 ```
 
 This will create `model_5.pkl` file with the trained model.
 
 2. **Run the server:**
 ```bash
-python server.py
+pip install requirements.txt
+uvicorn server:app --host localhost --port 5000
 ```
 
 Server will start at `http://localhost:5000`
 
 ## API Endpoints
 
-### GET /
-Health check and API information
-
-### POST /api/predict
+### GET /api/predict
 Predict diamond price
 
-**Request Body:**
-```json
-{
-  "carat": 0.5,
-  "cut": "Ideal",
-  "color": "E",
-  "clarity": "VS1"
-}
+**Request Params:**
+```
+- carat: float (e.g., 0.5, 1.0, 2.0)
+- cut: string (Fair, Good, Very Good, Premium, Ideal)
+- color: string (D, E, F, G, H, I, J)
+- clarity: string (IF, VVS1, VVS2, VS1, VS2, SI1, SI2, I1)
 ```
 
 **Response:**
 ```json
 {
-  "predicted_price": 1234.56,
-  "model": "Model 5: log(carat) + cut + color + clarity",
-  "input": {
-    "carat": 0.5,
-    "cut": "Ideal",
-    "color": "E",
-    "clarity": "VS1"
-  }
+  "predicted_price": 1234,
+  "status": "success",
 }
 ```
 
@@ -64,12 +55,3 @@ Model 5 uses log-linear regression:
 - Features: log(carat), cut, color, clarity
 - Target: log(price)
 - Predictions are transformed back from log space to original price
-
-## Testing
-
-Test with curl:
-```bash
-curl -X POST http://localhost:5000/api/predict \
-  -H "Content-Type: application/json" \
-  -d '{"carat": 0.5, "cut": "Ideal", "color": "E", "clarity": "VS1"}'
-```
