@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function Home() {
-  const [carat, setCarat] = useState<number>(0)
+  const [carat, setCarat] = useState<string>("")
   const [cut, setCut] = useState<string>("")
   const [color, setColor] = useState<string>("")
   const [clarity, setClarity] = useState<string>("")
@@ -20,7 +20,7 @@ export default function Home() {
     try {
       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URI || "http://localhost:5000"}/api/predict`, {
         params: {
-          carat,
+          carat: Number(carat),
           cut,
           color,
           clarity
@@ -51,8 +51,8 @@ export default function Home() {
                 type="number" 
                 step="0.01"
                 placeholder="Enter carat (e.g., 0.5)" 
-                value={carat || ""} 
-                onChange={(e) => setCarat(Number(e.target.value))} 
+                value={carat} 
+                onChange={(e) => setCarat(e.target.value)} 
                 className="px-4 py-3 rounded-lg bg-white/90 backdrop-blur border border-white/50 focus:outline-none focus:ring-2 focus:ring-[#2a9d8f]"
               />
             </div>
