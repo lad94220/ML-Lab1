@@ -72,12 +72,11 @@ export default function Home() {
                 placeholder="Enter carat (e.g., 0.5)" 
                 value={carat} 
                 onChange={(e) => setCarat(e.target.value)} 
-                className={`px-4 py-3 rounded-lg backdrop-blur border focus:outline-none focus:ring-2 text-[#264653] ${
+                className={`px-4 py-3 rounded-lg bg-white/90 backdrop-blur border focus:outline-none focus:ring-2 text-[#264653] ${
                   carat && (isNaN(Number(carat)) || Number(carat) <= 0)
                     ? 'border-red-400 focus:ring-red-400'
-                    : 'border-[#2a9d8f]/30 focus:ring-[#2a9d8f]'
+                    : 'border-white/50 focus:ring-[#2a9d8f]'
                 }`}
-                style={{ backgroundColor: '#e0f2f1' }}
               />
               {carat && (isNaN(Number(carat)) || Number(carat) <= 0) && (
                 <span className="text-red-600 text-sm mt-1">Carat must be greater than 0</span>
@@ -91,12 +90,11 @@ export default function Home() {
                 <select 
                   value={cut} 
                   onChange={(e) => setCut(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg backdrop-blur border border-[#2a9d8f]/30 focus:outline-none focus:ring-2 focus:ring-[#2a9d8f] text-[#264653] appearance-none pr-10"
-                  style={{ backgroundColor: '#e0f2f1', colorScheme: 'light', accentColor: '#2a9d8f' }}
+                  className="w-full px-4 py-3 rounded-lg bg-white/90 backdrop-blur border border-white/50 focus:outline-none focus:ring-2 focus:ring-[#2a9d8f] text-[#264653] appearance-none pr-10"
                 >
-                  <option value="" style={{ backgroundColor: '#e0f2f1', color: '#264653' }}>Select cut quality</option>
+                  <option value="">Select cut quality</option>
                   {cutOptions.map((option) => (
-                    <option key={option} value={option} style={{ backgroundColor: '#e0f2f1', color: '#264653' }}>{option}</option>
+                    <option key={option} value={option}>{option}</option>
                   ))}
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
@@ -114,12 +112,11 @@ export default function Home() {
                 <select 
                   value={color} 
                   onChange={(e) => setColor(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg backdrop-blur border border-[#2a9d8f]/30 focus:outline-none focus:ring-2 focus:ring-[#2a9d8f] text-[#264653] appearance-none pr-10"
-                  style={{ backgroundColor: '#e0f2f1', colorScheme: 'light', accentColor: '#2a9d8f' }}
+                  className="w-full px-4 py-3 rounded-lg bg-white/90 backdrop-blur border border-white/50 focus:outline-none focus:ring-2 focus:ring-[#2a9d8f] text-[#264653] appearance-none pr-10"
                 >
-                  <option value="" style={{ backgroundColor: '#e0f2f1', color: '#264653' }}>Select color grade</option>
+                  <option value="">Select color grade</option>
                   {colorOptions.map((option) => (
-                    <option key={option} value={option} style={{ backgroundColor: '#e0f2f1', color: '#264653' }}>{option}</option>
+                    <option key={option} value={option}>{option}</option>
                   ))}
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
@@ -137,12 +134,11 @@ export default function Home() {
                 <select 
                   value={clarity} 
                   onChange={(e) => setClarity(e.target.value)}
-                  className="w-full px-4 py-3 rounded-lg backdrop-blur border border-[#2a9d8f]/30 focus:outline-none focus:ring-2 focus:ring-[#2a9d8f] text-[#264653] appearance-none pr-10"
-                  style={{ backgroundColor: '#e0f2f1', colorScheme: 'light', accentColor: '#2a9d8f' }}
+                  className="w-full px-4 py-3 rounded-lg bg-white/90 backdrop-blur border border-white/50 focus:outline-none focus:ring-2 focus:ring-[#2a9d8f] text-[#264653] appearance-none pr-10"
                 >
-                  <option value="" style={{ backgroundColor: '#e0f2f1', color: '#264653' }}>Select clarity grade</option>
+                  <option value="">Select clarity grade</option>
                   {clarityOptions.map((option) => (
-                    <option key={option} value={option} style={{ backgroundColor: '#e0f2f1', color: '#264653' }}>{option}</option>
+                    <option key={option} value={option}>{option}</option>
                   ))}
                 </select>
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
