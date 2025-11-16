@@ -141,7 +141,7 @@ ML-Lab1/
 │       ├── server/                      # FastAPI backend
 │       │   ├── server.py                # Main API server
 │       │   ├── model_utils.py           # Model loading & prediction
-│       │   ├── model_5.pkl              # Trained log-linear model
+│       │   ├── model.pkl                # Trained log-linear model
 │       │   ├── requirements.txt         # Python dependencies
 │       │   └── README.md                # Server documentation
 │       └── client/                      # Next.js frontend
@@ -309,16 +309,6 @@ log(price) = β₀ + β₁·log(carat) + β₂·cut + β₃·color + β₄·clar
 - **Vercel**: Frontend hosting with automatic deployments
 - **Render**: Backend hosting with Python support
 - **Git/GitHub**: Version control and CI/CD
-
-## 🐛 Troubleshooting
-### Model Not Found
-
-**Issue**: `Model file not found` error
-
-```bash
-cd src
-python train_model.py
-```
 
 ### CORS Errors
 
