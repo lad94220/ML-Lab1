@@ -82,10 +82,6 @@ cd src/app/server
 # Install Python dependencies
 pip install -r requirements.txt
 
-# Train the model (first time only)
-cd ../..
-python train_model.py
-
 # Run the server
 cd app/server
 python server.py
@@ -141,7 +137,6 @@ ML-Lab1/
 │   ├── 02_model_training.ipynb          # Model training experiments
 │   └── 03_model_evaluation.ipynb        # Model evaluation metrics
 ├── src/
-│   ├── train_model.py                   # Model training script
 │   └── app/
 │       ├── server/                      # FastAPI backend
 │       │   ├── server.py                # Main API server
