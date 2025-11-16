@@ -3,7 +3,7 @@ import pandas as pd
 import pickle
 import os
 
-MODEL_PATH = os.path.join(os.path.dirname(__file__), 'model_5.pkl')
+MODEL_PATH = os.path.join(os.path.dirname(__file__), 'model.pkl')
 
 # Encoding mappings from the dataset (0-indexed)
 CUT_MAPPING = {
@@ -46,7 +46,7 @@ def encode_clarity(clarity: str) -> int:
 
 def load_model():
   if not os.path.exists(MODEL_PATH):
-    raise FileNotFoundError(f"Model file not found at {MODEL_PATH}. Please run train_model.py first.")
+    raise FileNotFoundError(f"Model file not found at {MODEL_PATH}. Please train model first.")
   
   with open(MODEL_PATH, 'rb') as f:
     model = pickle.load(f)
@@ -54,14 +54,14 @@ def load_model():
 
 try:
   model = load_model()
-  print("Model 5 loaded successfully!")
+  print("Model loaded successfully!")
 except FileNotFoundError as e:
   print(f"Warning: {e}")
   model = None
 
 def predict_price(carat: float, cut: str, color: str, clarity: str) -> float:
   if model is None:
-    raise RuntimeError("Model not loaded. Please run train_model.py first.")
+    raise RuntimeError("Model not loaded. Please train model first.")
   
   # Apply log transformation to carat
   log_carat = np.log(carat)
