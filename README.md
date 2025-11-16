@@ -276,14 +276,6 @@ log(price) = β₀ + β₁·log(carat) + β₂·cut + β₃·color + β₄·clar
 - VVS1 = 7
 - IF = 8 (internally flawless)
 
-### Model Coefficients
-
-```python
-log_carat: 1.8689    # Most important feature
-clarity:   0.1178    # Second most important
-color:     0.0751    # Third
-cut:       0.0250    # Least impact
-intercept: 7.6194
 ```
 
 ### Training Dataset
