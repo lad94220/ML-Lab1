@@ -34,7 +34,6 @@ async def root():
 
 @app.get('/api/predict', response_model=PredictionResponse)
 async def predict(carat: float, cut: str, color: str, clarity: str):
-  
   is_valid, error_msg = validate_input(carat, cut, color, clarity)
   
   if not is_valid:

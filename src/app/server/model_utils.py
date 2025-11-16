@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import pickle
+import joblib
 import os
 
 MODEL_PATH = os.path.join(os.path.dirname(__file__), 'model.pkl')
@@ -48,8 +48,7 @@ def load_model():
   if not os.path.exists(MODEL_PATH):
     raise FileNotFoundError(f"Model file not found at {MODEL_PATH}. Please train model first.")
   
-  with open(MODEL_PATH, 'rb') as f:
-    model = pickle.load(f)
+  model = joblib.load(MODEL_PATH)
   return model
 
 try:
@@ -93,15 +92,15 @@ def validate_input(carat: float, cut: str, color: str, clarity: str) -> tuple[bo
   valid_clarities = ["IF", "VVS1", "VVS2", "VS1", "VS2", "SI1", "SI2", "I1"]
   
   if carat <= 0:
-      return False, "Carat must be greater than 0"
+    return False, "Carat must be greater than 0"
   
   if cut not in valid_cuts:
-      return False, f"Cut must be one of: {', '.join(valid_cuts)}"
+    return False, f"Cut must be one of: {', '.join(valid_cuts)}"
   
   if color not in valid_colors:
-      return False, f"Color must be one of: {', '.join(valid_colors)}"
+    return False, f"Color must be one of: {', '.join(valid_colors)}"
   
   if clarity not in valid_clarities:
-      return False, f"Clarity must be one of: {', '.join(valid_clarities)}"
+    return False, f"Clarity must be one of: {', '.join(valid_clarities)}"
   
   return True, ""
